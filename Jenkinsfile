@@ -9,4 +9,10 @@ node{
     stage('3-TEST'){
         sh 'cat me.txt'
     }
+    stage('Sonar Scan'){
+        withSonarQubeEnv('My SonarQube Server') {
+            sh 'mvn clean package sonar:sonar'
+        }
+    }
+    
 }
